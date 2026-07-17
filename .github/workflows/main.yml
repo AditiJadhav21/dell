@@ -1,11 +1,10 @@
-name: Deploy pages
+name: Deploy Pages
 on:
   push:
     branches: [ main ]
 permissions:
   pages: write
   id-token: write
- 
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/upload-pages-artifact@v3
-      with:
-        path:
+        with:
+          path: .
       - uses: actions/deploy-pages@v4
-
