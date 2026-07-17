@@ -1,13 +1,12 @@
-name: CI
-on: push
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "Lint step running"
-  test:
-    runs-on: ubuntu-latest
+  deploy:
+    needs: test
+    runs-on: 
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Test step running"
+      - run: echo "Deploying to production"
