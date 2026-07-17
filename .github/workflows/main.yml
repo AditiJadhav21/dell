@@ -1,14 +1,9 @@
 name: CI
 on: push
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: echo "Lint step running"
   deploy:
     needs: test
-    runs-on: 
+    runs-on: ubuntu-latestif: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Deploying to production"
+      - run: echo "Deploying, beacuse this is main"
