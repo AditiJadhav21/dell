@@ -1,9 +1,22 @@
 name: CI
-on: push
+
+on:
+  push:
+  pull_request:
+
 jobs:
-  deploy:
-    needs: test
-    runs-on: ubuntu-latestif: github.ref == 'refs/heads/main'
+  test:
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Deploying, beacuse this is main"
+      - run: echo "Running tests"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Deploying, because this is main"
